@@ -10,3 +10,8 @@
       </footer>
     </div>
 </template>
+<style>
+body {
+  overflow: hidden;
+}
+</style>
