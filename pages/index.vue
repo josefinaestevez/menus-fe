@@ -1,29 +1,9 @@
 <template>
   <NuxtLayout name="default">
     <div v-if="!scrolled" class="menu-background"></div>
-    <div ref="menuElement" class="menu w-full h-full fixed pl-3 pr-3" :class="{ 'top-52': !scrolled }">
-      <div class="menu-header flex justify-between mt-8">
-        <div v-if="!scrolled" class="fixed left-0 w-full h-16 bg-white flex justify-between px-3">
-          <div>
-            <h1 class="text-2xl">Sunny Bites</h1>
-            <p class="text-sm text-slate-400 mt-2 mb-4">Menú</p>
-          </div>
-          <div class="flex space-x-4 mt-1">
-            <img src="/icons/search.svg" alt="Search Icon" class="h-6 w-6">
-            <img src="/icons/info.svg" alt="Info Icon" class="h-6 w-6">
-            <img src="/icons/globe.svg" alt="Globe Icon" class="h-6 w-6">
-          </div>
-        </div>
-        <div v-else class="fixed top-0 left-0 w-full h-16 bg-white flex justify-between items-center px-4 py-2">
-          <div class="flex space-x-4">
-            <img src="/icons/search.svg" alt="Search Icon" class="h-6 w-6">
-            <img src="/icons/globe.svg" alt="Globe Icon" class="h-6 w-6">
-          </div>
-          <h1 class="text-xl font-semibold text-center flex-1">Sunny Bites</h1>
-          <img src="/icons/info.svg" alt="Info Icon" class="h-6 w-6">
-        </div>
-      </div>
-      <div class="mt-20 mb-20">
+    <div ref="menuElement" class="w-full h-full fixed pl-3 pr-3 bg-white overflow-y-auto" :class="{ 'top-52 menu-without-scroll': !scrolled }">
+      <MenuHeader :scrolled="scrolled" />
+      <div class="mt-28 mb-20">
         <Category v-for="category in menu.categories" :category="category" />
       </div>
     </div>
@@ -158,9 +138,7 @@ onUnmounted(() => {
   width: 100%; /* Full width of the page */
   height: 400px; /* Adjust the height as needed */
 }
-.menu {
-  background-color: white;
+.menu-without-scroll {
   border-radius: 39px;
-  overflow-y: auto;
 }
 </style>
