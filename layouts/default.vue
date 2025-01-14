@@ -5,7 +5,7 @@
       </main>
       <footer>
         <slot name="footer">
-          <!-- <Footer /> -->
+          <Footer />
         </slot>
       </footer>
     </div>
