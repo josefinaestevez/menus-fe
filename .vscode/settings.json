@@ -1,5 +1,40 @@
 {
-    "files.associations": {
-       "*.css": "tailwindcss"
-    }
-  }
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  // Enable format on save to automatically format the code when saving
+  "editor.formatOnSave": true,
+
+  // Ensure that ESLint runs automatically on file save
+  "eslint.validate": ["javascript", "typescript", "vue", "html"],
+
+  // Enable Prettier as the default code formatter
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Enable ESLint to lint and fix on save
+  "eslint.run": "onSave",
+
+  // Set the Prettier configuration file to be used for formatting
+  "prettier.configPath": ".prettierrc",
+
+  // If you want to prevent Prettier from formatting certain files or directories, use this setting
+  "prettier.ignorePath": ".prettierignore",
+
+  // Enable the formatting of files with single quotes when using Prettier
+  "prettier.singleQuote": false,
+
+  // Control the print width for Prettier formatting
+  "prettier.printWidth": 80,
+
+  // Make sure to use semicolons in the code
+  "prettier.semi": true,
+
+  // Automatically fix ESLint issues and format files on save
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.fixAll.eslint": "always"
+  },
+
+  // Ensure Prettier is used for all supported file types
+  "editor.formatOnSaveMode": "file"
+}
