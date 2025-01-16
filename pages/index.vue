@@ -13,6 +13,7 @@
           v-for="(category, index) in menu.categories"
           :key="index"
           :category="category"
+          @update:setCategoryRef="setCategoryRef"
         />
       </div>
       <MenuFooter @update:selectedCategory="handleCategoryChange" />
@@ -134,10 +135,17 @@ function handleScroll() {
   scrolled.value = (menuElement.value?.scrollTop ?? 0) > 50;
 };
 
-const currentCategory = ref<Category | null>(null);
-
 function handleCategoryChange(category: Category): void {
-  currentCategory.value = category;
+  const target = categoryRefs.value[category.name];
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+const categoryRefs = ref<Record<string, HTMLElement>>({});
+
+function setCategoryRef(el: HTMLElement, categoryName: string): void {
+  categoryRefs.value[categoryName] = el;
 }
 
 onMounted(() => {
