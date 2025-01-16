@@ -13,9 +13,7 @@ import type { Category } from '@/types/menu';
 defineProps({
   category: {
     type: Object as PropType<Category>,
-    default() {
-      return {};
-    },
+    required: true
   },
 });
 </script>

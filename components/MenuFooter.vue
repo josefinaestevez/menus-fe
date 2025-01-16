@@ -6,39 +6,46 @@
       <a
         v-for="category in categories"
         :key="category.name"
-        href="#"
         class="h-full flex flex-col items-center text-gray-600 hover:text-black flex-shrink-0 w-1/3 justify-center relative"
+        @click.prevent="selectCategory(category)"
       >
         <span class="text-xs">{{ category.name }}</span>
         <div
-          v-if="category.selected"
+          v-if="selectedCategory?.name === category.name"
           class="absolute bottom-0 left-0 w-full border-b-2 border-solid border-amber-300"
         ></div>
-        <!-- Línea amarilla abajo -->
       </a>
     </div>
   </footer>
 </template>
 
-<script setup>
-const categories = [
+<script setup lang="ts">
+import { ref } from 'vue';
+import type { Category } from '@/types/menu';
+
+const categories: Category[] = [
   {
     name: 'Novedades',
-    selected: true,
   },
   {
     name: 'Favoritos',
-    selected: false,
   },
   {
     name: 'Brunch',
-    selected: false,
   },
   {
     name: 'Cafés',
-    selected: false,
   },
 ];
+
+const selectedCategory = ref<Category | null>(categories[0]);
+
+const emit = defineEmits<{(event: 'update:selectedCategory', category: Category): void;}>();
+
+function selectCategory(category: Category): void {
+  selectedCategory.value = category;
+  emit('update:selectedCategory', category);
+}
 </script>
 
 <style scoped>

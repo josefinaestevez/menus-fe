@@ -4,11 +4,6 @@
     <main class="flex-grow">
       <slot />
     </main>
-    <footer>
-      <slot name="footer">
-        <MenuFooter />
-      </slot>
-    </footer>
   </div>
 </template>
 <style>

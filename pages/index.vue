@@ -15,12 +15,13 @@
           :category="category"
         />
       </div>
+      <MenuFooter @update:selectedCategory="handleCategoryChange" />
     </div>
   </NuxtLayout>
 </template>
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
-import type { Menu } from '@/types/menu';
+import type { Menu, Category } from '@/types/menu';
 
 const menu: Menu = {
   categories: [
@@ -129,9 +130,15 @@ const menu: Menu = {
 const scrolled = ref(false);
 const menuElement = ref<HTMLElement | null>(null);
 
-const handleScroll = () => {
+function handleScroll() {
   scrolled.value = (menuElement.value?.scrollTop ?? 0) > 50;
 };
+
+const currentCategory = ref<Category | null>(null);
+
+function handleCategoryChange(category: Category): void {
+  currentCategory.value = category;
+}
 
 onMounted(() => {
   if (menuElement.value) {
