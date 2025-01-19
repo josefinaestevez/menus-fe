@@ -4,7 +4,7 @@
     <div v-if="!scrolled" class="menu-background"></div>
     <div
       ref="menuElement"
-      class="w-full h-full fixed pl-3 pr-3 bg-white overflow-y-auto"
+      class="w-full h-full fixed bg-white overflow-y-auto"
       :class="{ 'top-52 menu-without-scroll': !scrolled }"
     >
       <MenuHeader :compacted="scrolled" />

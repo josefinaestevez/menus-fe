@@ -1,5 +1,5 @@
 <template>
-  <a href="#" class="flex mt-2">
+  <router-link to="/menu-dish" class="flex mt-2">
     <img
       :src="dish.image ? '/images/desayuno.jpeg' : '/images/grey.jpg'"
       alt="Dish 1"
@@ -12,7 +12,7 @@
     <div class="text-lg pr-2 whitespace-nowrap w-20">
       <span class="float-right">{{ formattedPrice }}</span>
     </div>
-  </a>
+  </router-link>
 </template>
 <script setup lang="ts">
 import type { PropType } from 'vue';

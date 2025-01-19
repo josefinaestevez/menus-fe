@@ -1,11 +1,14 @@
 <template>
   <div :ref="el => setCategoryRef(el)">
-    <h2 class="mt-2 font-medium">{{ category.name }}</h2>
-    <MenuCategoryDish
-      v-for="(dish, index) in category.dishes"
-      :key="index"
-      :dish="dish"
-    />
+    <div class="pl-3 pr-3">
+      <h2 class="mt-2 font-medium">{{ category.name }}</h2>
+      <MenuCategoryDish
+        v-for="(dish, index) in category.dishes"
+        :key="index"
+        :dish="dish"
+      />
+    </div>
+    <hr class="mt-4 w-full"/>
   </div>
 </template>
 <script setup lang="ts">

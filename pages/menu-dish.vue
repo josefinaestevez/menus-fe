@@ -11,12 +11,13 @@
           <p class="text-sm text-gray-400">Gluten, lácteos.</p>
         </div>
     </div>
-    <footer class="fixed bottom-0 left-0 w-full h-24 flex justify-center">
+    <router-link class="fixed bottom-0 left-0 w-full h-24 flex justify-center" to="/">
         <img :src="icons.xCircle" alt="X Circle Icon" class="h-10 w-10" />
-    </footer>
+    </router-link>
 </template>
 <script setup lang="ts">
 import { BackgroundType } from '~/types/menu';
+
 const background = BackgroundType.Transparent
 const icons = {
   xCircle: '/icons/x-circle.svg'
