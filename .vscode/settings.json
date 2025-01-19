@@ -34,7 +34,10 @@
     "source.fixAll": "always",
     "source.fixAll.eslint": "always"
   },
-
-  // Ensure Prettier is used for all supported file types
-  "editor.formatOnSaveMode": "file"
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
