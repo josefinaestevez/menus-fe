@@ -38,7 +38,7 @@
 
 <script setup lang="ts">
 import { defineProps, type PropType } from 'vue';
-import type { BackgroundType } from '../types/menu';
+import type { BackgroundType } from '@/types/menu';
 
 const props = defineProps({
   compacted: {

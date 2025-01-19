@@ -23,7 +23,7 @@
   </router-link>
 </template>
 <script setup lang="ts">
-import { BackgroundType } from '~/types/menu';
+import { BackgroundType } from '@/types/menu';
 
 const background = BackgroundType.Transparent;
 const icons = {
