@@ -9,10 +9,14 @@
         class="h-full flex flex-col items-center text-gray-600 hover:text-black flex-shrink-0 w-1/3 justify-center relative"
         @click.prevent="selectCategory(category)"
       >
-        <span class="text-xs">{{ category.name }}</span>
+        <span
+          class="text-base"
+          :class="{ 'font-bold': selectedCategory?.name === category.name }"
+          >{{ category.name }}</span
+        >
         <div
           v-if="selectedCategory?.name === category.name"
-          class="absolute bottom-0 left-0 w-full border-b-2 border-solid border-amber-300"
+          class="absolute bottom-0 left-0 w-full border-b-4 border-solid border-amber-300"
         ></div>
       </a>
     </div>

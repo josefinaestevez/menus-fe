@@ -1,14 +1,17 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <NuxtLayout name="default">
-    <div v-if="!scrolled" class="menu-background"></div>
+    <div
+      v-if="!scrolled"
+      class="bg-fixed bg-contain h-64 w-full bg-[url('/images/restaurant-header.jpeg')]"
+    ></div>
     <div
       ref="menuElement"
       class="w-full h-full fixed bg-white overflow-y-auto"
-      :class="{ 'top-52 menu-without-scroll': !scrolled }"
+      :class="{ 'top-52 border-radius': !scrolled }"
     >
       <MenuHeader :compacted="scrolled" />
-      <div class="mt-28 mb-20">
+      <div class="mt-32 mb-20">
         <MenuCategory
           v-for="(category, index) in menu.categories"
           :key="index"
@@ -161,15 +164,7 @@ onUnmounted(() => {
 });
 </script>
 <style scoped>
-.menu-background {
-  background-image: url('/images/restaurant-header.jpeg'); /* Path to your image */
-  background-size: cover; /* Ensure the image covers the full container */
-  background-position: top center; /* Position the image at the top and center horizontally */
-  background-repeat: no-repeat; /* Avoid repeating the image */
-  width: 100%; /* Full width of the page */
-  height: 400px; /* Adjust the height as needed */
-}
-.menu-without-scroll {
+.border-radius {
   border-radius: 39px;
 }
 </style>

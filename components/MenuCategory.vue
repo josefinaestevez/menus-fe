@@ -1,7 +1,7 @@
 <template>
   <div :ref="(el) => setCategoryRef(el)">
     <div class="pl-3 pr-3">
-      <h2 class="mt-2 font-medium">{{ category.name }}</h2>
+      <h2 class="mt-3 font-semibold">{{ category.name }}</h2>
       <MenuCategoryDish
         v-for="(dish, index) in category.dishes"
         :key="index"

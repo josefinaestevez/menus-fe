@@ -6,10 +6,10 @@
     ]"
   >
     <!-- When the user hasn't scrolled -->
-    <div v-if="!compacted" class="flex justify-between w-full mt-20 px-3 py-2">
+    <div v-if="!compacted" class="flex justify-between w-full mt-24 px-3 py-2">
       <div>
-        <h1 class="text-2xl">Sunny Bites</h1>
-        <p class="text-sm text-slate-400 mt-2 mb-4">Menu</p>
+        <h1 class="text-2xl font-bold">Sunny Bites</h1>
+        <p class="text-sm text-slate-400 mt-1 mb-4">Menú</p>
       </div>
       <div class="flex space-x-4 mt-1">
         <img :src="icons.search" alt="Search Icon" class="h-6 w-6" />
