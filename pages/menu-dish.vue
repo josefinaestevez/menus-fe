@@ -5,7 +5,7 @@
     <MenuHeader :background="background" hide-title />
   </div>
   <div class="bg-white h-full w-full fixed top-[22rem] border-radius">
-    <div class="pl-3 pr-3 mt-12">
+    <div class="pl-3 pr-3 mt-12 opacity-0 animate-fadeIn">
       <h1 class="text-2xl font-bold text-gray-800">Desayuno Continental</h1>
       <p class="font-semibold mt-1">€9.50</p>
       <p class="mt-2 text-sm text-gray-400">

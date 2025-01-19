@@ -11,7 +11,7 @@
       :class="{ 'top-52 border-radius': !scrolled }"
     >
       <MenuHeader :compacted="scrolled" />
-      <div class="mt-32 mb-20">
+      <div class="mt-32 mb-20 opacity-0 animate-fadeIn">
         <MenuCategory
           v-for="(category, index) in menu.categories"
           :key="index"
