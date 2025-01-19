@@ -14,3 +14,8 @@ export interface Category {
 export interface Menu {
   categories: Category[];
 }
+
+export enum BackgroundType {
+  White = 'white',
+  Transparent = 'transparent',
+}

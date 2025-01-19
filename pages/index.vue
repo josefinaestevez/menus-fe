@@ -7,7 +7,7 @@
       class="w-full h-full fixed pl-3 pr-3 bg-white overflow-y-auto"
       :class="{ 'top-52 menu-without-scroll': !scrolled }"
     >
-      <MenuHeader :scrolled="scrolled" />
+      <MenuHeader :compacted="scrolled" />
       <div class="mt-28 mb-20">
         <MenuCategory
           v-for="(category, index) in menu.categories"
