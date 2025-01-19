@@ -40,7 +40,9 @@ const categories: Category[] = [
 
 const selectedCategory = ref<Category | null>(categories[0]);
 
-const emit = defineEmits<{(event: 'update:selectedCategory', category: Category): void;}>();
+const emit = defineEmits<{
+  (event: 'update:selectedCategory', category: Category): void;
+}>();
 
 function selectCategory(category: Category): void {
   selectedCategory.value = category;

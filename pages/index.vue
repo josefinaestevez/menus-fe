@@ -133,7 +133,7 @@ const menuElement = ref<HTMLElement | null>(null);
 
 function handleScroll() {
   scrolled.value = (menuElement.value?.scrollTop ?? 0) > 50;
-};
+}
 
 function handleCategoryChange(category: Category): void {
   const target = categoryRefs.value[category.name];

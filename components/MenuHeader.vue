@@ -12,7 +12,7 @@
         <p class="text-sm text-slate-400 mt-2 mb-4">Menu</p>
       </div>
       <div class="flex space-x-4 mt-1">
-        <img :src="icons.search"  alt="Search Icon" class="h-6 w-6" />
+        <img :src="icons.search" alt="Search Icon" class="h-6 w-6" />
         <img :src="icons.info" alt="Info Icon" class="h-6 w-6" />
         <img :src="icons.globe" alt="Globe Icon" class="h-6 w-6" />
       </div>
@@ -28,7 +28,9 @@
         <img :src="icons.search" alt="Search Icon" class="h-6 w-6" />
         <img :src="icons.globe" alt="Globe Icon" class="h-6 w-6" />
       </div>
-      <h1 v-if="!hideTitle" class="text-xl font-semibold text-center flex-1">Sunny Bites</h1>
+      <h1 v-if="!hideTitle" class="text-xl font-semibold text-center flex-1">
+        Sunny Bites
+      </h1>
       <img :src="icons.info" alt="Info Icon" class="h-6 w-6" />
     </div>
   </div>
@@ -36,26 +38,26 @@
 
 <script setup lang="ts">
 import { defineProps, type PropType } from 'vue';
-import type { BackgroundType } from '../types/menu'
+import type { BackgroundType } from '../types/menu';
 
 const props = defineProps({
   compacted: {
     type: Boolean,
-    default: true
+    default: true,
   },
   background: {
     type: String as PropType<BackgroundType>,
-    default: 'white'
+    default: 'white',
   },
   hideTitle: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
 const icons = {
   search: `/icons/search-${props.background === 'transparent' ? 'white' : 'black'}.svg`,
   globe: `/icons/globe-${props.background === 'transparent' ? 'white' : 'black'}.svg`,
   info: `/icons/info-${props.background === 'transparent' ? 'white' : 'black'}.svg`,
-}
+};
 </script>
