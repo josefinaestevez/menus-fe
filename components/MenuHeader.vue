@@ -14,7 +14,12 @@
       <div class="flex space-x-4 mt-1">
         <img :src="icons.search" alt="Search Icon" class="h-6 w-6" />
         <img :src="icons.info" alt="Info Icon" class="h-6 w-6" />
-        <img :src="icons.globe" alt="Globe Icon" class="h-6 w-6" />
+        <img
+          :src="icons.globe"
+          alt="Globe Icon"
+          class="h-6 w-6"
+          @click="openLanguageModal"
+        />
       </div>
     </div>
 
@@ -26,19 +31,27 @@
     >
       <div class="flex space-x-4">
         <img :src="icons.search" alt="Search Icon" class="h-6 w-6" />
-        <img :src="icons.globe" alt="Globe Icon" class="h-6 w-6" />
+        <img
+          :src="icons.globe"
+          alt="Globe Icon"
+          class="h-6 w-6"
+          @click="openLanguageModal"
+        />
       </div>
       <h1 v-if="!hideTitle" class="text-xl font-semibold text-center flex-1">
         Sunny Bites
       </h1>
       <img :src="icons.info" alt="Info Icon" class="h-6 w-6" />
     </div>
+
+    <LanguageModal ref="modalRef" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps, type PropType } from 'vue';
+import { defineProps, type PropType, ref } from 'vue';
 import type { BackgroundType } from '@/types/menu';
+import LanguageModal from '~/components/LanguageModal.vue';
 
 const props = defineProps({
   compacted: {
@@ -60,4 +73,14 @@ const icons = {
   globe: `/icons/globe-${props.background === 'transparent' ? 'white' : 'black'}.svg`,
   info: `/icons/info-${props.background === 'transparent' ? 'white' : 'black'}.svg`,
 };
+
+type LanguageModalType = {
+  openModal: () => void;
+};
+
+const modalRef = ref<LanguageModalType | null>(null);
+
+function openLanguageModal() {
+  modalRef.value?.openModal();
+}
 </script>
