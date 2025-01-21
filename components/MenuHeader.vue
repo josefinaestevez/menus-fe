@@ -13,7 +13,12 @@
       </div>
       <div class="flex space-x-4 mt-1">
         <img :src="icons.search" alt="Search Icon" class="h-6 w-6" />
-        <img :src="icons.info" alt="Info Icon" class="h-6 w-6" />
+        <img
+          :src="icons.info"
+          alt="Info Icon"
+          class="h-6 w-6"
+          @click="openInfoModal"
+        />
         <img
           :src="icons.globe"
           alt="Globe Icon"
@@ -41,10 +46,16 @@
       <h1 v-if="!hideTitle" class="text-xl font-semibold text-center flex-1">
         Sunny Bites
       </h1>
-      <img :src="icons.info" alt="Info Icon" class="h-6 w-6" />
+      <img
+        :src="icons.info"
+        alt="Info Icon"
+        class="h-6 w-6"
+        @click="openInfoModal"
+      />
     </div>
 
-    <LanguageModal ref="modalRef" />
+    <LanguageModal ref="languageModalRef" />
+    <InfoModal ref="infoModalRef" />
   </div>
 </template>
 
@@ -52,6 +63,7 @@
 import { defineProps, type PropType, ref } from 'vue';
 import type { BackgroundType } from '@/types/menu';
 import LanguageModal from '~/components/LanguageModal.vue';
+import InfoModal from '~/components/InfoModal.vue';
 
 const props = defineProps({
   compacted: {
@@ -74,13 +86,17 @@ const icons = {
   info: `/icons/info-${props.background === 'transparent' ? 'white' : 'black'}.svg`,
 };
 
-type LanguageModalType = {
+type ModalType = {
   openModal: () => void;
 };
 
-const modalRef = ref<LanguageModalType | null>(null);
+const languageModalRef = ref<ModalType | null>(null);
+const infoModalRef = ref<ModalType | null>(null);
 
 function openLanguageModal() {
-  modalRef.value?.openModal();
+  languageModalRef.value?.openModal();
+}
+function openInfoModal() {
+  infoModalRef.value?.openModal();
 }
 </script>
