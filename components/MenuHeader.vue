@@ -1,5 +1,5 @@
 <template>
-  <div
+  <header
     :class="[
       'fixed left-0 w-full h-16 flex justify-between items-center',
       { 'top-0 z-10': compacted },
@@ -60,7 +60,7 @@
 
     <LanguageModal ref="languageModalRef" />
     <InfoModal ref="infoModalRef" />
-  </div>
+  </header>
 </template>
 
 <script setup lang="ts">

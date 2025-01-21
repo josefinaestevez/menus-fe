@@ -37,6 +37,7 @@ import { UAParser } from 'ua-parser-js';
 import type { Menu, Category } from '@/types/menu';
 
 const { device } = UAParser();
+
 const isMobile = device.type === 'mobile' || device.type === 'tablet';
 
 const menu: Menu = {
@@ -152,8 +153,29 @@ function handleScroll() {
 
 function handleCategoryChange(category: Category): void {
   const target = categoryRefs.value[category.name];
+
   if (target) {
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Container that has the scroll
+    const scrollContainer = menuElement.value;
+    if (!scrollContainer) {
+      console.error('Scroll container not found');
+      return;
+    }
+
+    // Selects the fixed header
+    const header = document.querySelector('header');
+    const headerHeight = header ? header.offsetHeight : 0; // Height of the fixed header
+
+    // Calculates the relative position of the target element in relation to the container
+    const targetPosition =
+      target.getBoundingClientRect().top -
+      scrollContainer.getBoundingClientRect().top;
+
+    // Applies the scroll to the container
+    scrollContainer.scrollTo({
+      top: scrollContainer.scrollTop + targetPosition - headerHeight - 10, // Account for the header height and an extra margin
+      behavior: 'smooth',
+    });
   }
 }
 
