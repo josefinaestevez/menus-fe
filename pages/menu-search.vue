@@ -28,16 +28,20 @@
       </template>
     </div>
   </div>
-  <router-link
+  <div
+    @click="goBack"
     class="fixed bg-white bottom-0 left-0 w-full h-24 flex justify-center pt-8"
     to="/"
   >
     <img :src="icons.xCircle" alt="X Circle Icon" class="h-10 w-10" />
-  </router-link>
+  </div>
 </template>
 <script setup lang="ts">
 import { ref, computed } from 'vue';
+import { useRouter } from 'vue-router';
 import type { Menu } from '@/types/menu';
+
+const router = useRouter();
 
 const icons = {
   xCircle: '/icons/x-circle.svg',
@@ -165,4 +169,8 @@ const filteredCategories = computed(() => {
     }))
     .filter((category) => category.dishes && category.dishes.length > 0);
 });
+
+function goBack() {
+  router.back();
+}
 </script>
