@@ -31,7 +31,7 @@
                 as="h3"
                 class="text-xl font-bold leading-6 text-gray-900 align-top text-center"
               >
-                Información
+                {{ $t('information') }}
               </DialogTitle>
               <div class="mt-10">
                 <div>
@@ -42,7 +42,7 @@
                       class="h-6 w-6"
                     />
                     <span class="ml-2 text-lg font-medium text-left">
-                      Dirección
+                      {{ $t('address') }}
                     </span>
                   </p>
                   <p class="mt-2 text-slate-500 text-sm">
@@ -54,7 +54,7 @@
                   <p class="flex">
                     <img :src="icons.clock" alt="Clock Icon" class="h-6 w-6" />
                     <span class="ml-2 text-lg font-medium text-left">
-                      Horario de apertura
+                      {{ $t('openingHours') }}
                     </span>
                   </p>
                   <p class="mt-2 text-slate-500 text-sm">
@@ -69,14 +69,15 @@
                   <p class="flex">
                     <img :src="icons.mail" alt="Mail Icon" class="h-6 w-6" />
                     <span class="ml-2 text-lg font-medium text-left">
-                      Contacto
+                      {{ $t('contact') }}
                     </span>
                   </p>
                   <p class="mt-2 text-slate-500 text-sm">
-                    <span class="font-bold">Teléfono</span> +34912345678
+                    <span class="font-bold">{{ $t('phone') }}</span>
+                    +34912345678
                   </p>
                   <p class="mt-2 text-slate-500 text-sm">
-                    <span class="font-bold">Email</span>
+                    <span class="font-bold">{{ $t('email') }}</span>
                     contacto@brunchdelicias.com
                   </p>
                   <hr class="mt-8 mx-auto" />
@@ -85,7 +86,7 @@
                   <p class="flex">
                     <img :src="icons.atSign" alt="@ Icon" class="h-6 w-6" />
                     <span class="ml-2 text-lg font-medium text-left">
-                      Redes Sociales
+                      {{ $t('socialMedia') }}
                     </span>
                   </p>
                   <p class="mt-2 text-slate-500 text-sm">

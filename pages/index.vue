@@ -33,12 +33,8 @@
 </template>
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
-import { UAParser } from 'ua-parser-js';
+import { useIsMobileDevice } from '~/composables/uaParser';
 import type { Menu, Category } from '@/types/menu';
-
-const { device } = UAParser();
-
-const isMobile = device.type === 'mobile' || device.type === 'tablet';
 
 const menu: Menu = {
   categories: [
@@ -143,6 +139,8 @@ const menu: Menu = {
     },
   ],
 };
+
+const { data: isMobile } = useIsMobileDevice();
 
 const scrolled = ref(false);
 const menuElement = ref<HTMLElement | null>(null);

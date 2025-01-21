@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-between items-center w-full h-16 px-4">
-    <h1 class="text-xl font-semibold text-center flex-1">Buscar</h1>
+    <h1 class="text-xl font-semibold text-center flex-1">{{ $t('search') }}</h1>
   </div>
   <div class="h-full w-full fixed overflow-y-auto">
     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">

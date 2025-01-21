@@ -31,17 +31,17 @@
                 as="h3"
                 class="text-xl font-bold leading-6 text-gray-900 align-top"
               >
-                Idioma
+                {{ $t('language') }}
               </DialogTitle>
               <div class="mt-10">
                 <ul>
-                  <template v-for="(language, index) in languages" :key="index">
+                  <template v-for="(locale, index) in locales" :key="index">
                     <li
                       class="mt-2 text-lg"
-                      :class="{ 'font-bold': selectedLanguage === language }"
-                      @click="selectLanguage(language)"
+                      :class="{ 'font-bold': locale.code === currentLocale }"
+                      @click="setLocale(locale.code)"
                     >
-                      {{ language }}
+                      {{ locale.name }}
                     </li>
                     <hr class="mt-4 w-3/4 mx-auto" />
                   </template>
@@ -65,7 +65,6 @@
 
 <script setup>
 import { ref, defineExpose } from 'vue';
-import { useState } from '#app';
 import {
   TransitionRoot,
   TransitionChild,
@@ -73,8 +72,11 @@ import {
   DialogPanel,
   DialogTitle,
 } from '@headlessui/vue';
+import { useI18n } from 'vue-i18n';
 
 const isOpen = ref(false);
+
+const { locales, locale: currentLocale, setLocale } = useI18n();
 
 function closeModal() {
   isOpen.value = false;
@@ -84,17 +86,9 @@ function openModal() {
   isOpen.value = true;
 }
 
-function selectLanguage(language) {
-  selectedLanguage.value = language;
-}
-
 const icons = {
   xCircle: '/icons/x-circle.svg',
 };
-
-const languages = ['Español', 'Inglés'];
-
-const selectedLanguage = useState('selectedLanguage', () => languages[0]);
 
 defineExpose({
   openModal,
