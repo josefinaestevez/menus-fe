@@ -12,7 +12,9 @@
         <p class="text-sm text-slate-400 mt-1 mb-4">Menú</p>
       </div>
       <div class="flex space-x-4 mt-1">
-        <img :src="icons.search" alt="Search Icon" class="h-6 w-6" />
+        <router-link to="/menu-search">
+          <img :src="icons.search" alt="Search Icon" class="h-6 w-6" />
+        </router-link>
         <img
           :src="icons.info"
           alt="Info Icon"
@@ -35,7 +37,9 @@
       :class="`bg-${background}`"
     >
       <div class="flex space-x-4">
-        <img :src="icons.search" alt="Search Icon" class="h-6 w-6" />
+        <router-link to="/menu-search">
+          <img :src="icons.search" alt="Search Icon" class="h-6 w-6" />
+        </router-link>
         <img
           :src="icons.globe"
           alt="Globe Icon"
