@@ -1,31 +1,43 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <NuxtLayout name="default">
-    <div
-      v-if="!scrolled"
-      class="bg-fixed bg-contain h-64 w-full bg-[url('/images/restaurant-header.jpeg')]"
-    ></div>
-    <div
-      ref="menuElement"
-      class="w-full h-full fixed bg-white overflow-y-auto"
-      :class="{ 'top-52 border-radius': !scrolled }"
-    >
-      <MenuHeader :compacted="scrolled" />
-      <div class="mt-32 mb-20 opacity-0 animate-fadeIn">
-        <MenuCategory
-          v-for="(category, index) in menu.categories"
-          :key="index"
-          :category="category"
-          @update:setCategoryRef="setCategoryRef"
-        />
+    <div v-if="!isMobile">
+      <p class="mt-10 text-center">
+        This content is designed for mobile devices. Please try accessing it
+        from your phone or tablet.
+      </p>
+    </div>
+    <div v-else>
+      <div
+        v-if="!scrolled"
+        class="bg-fixed bg-contain h-64 w-full bg-[url('/images/restaurant-header.jpeg')]"
+      ></div>
+      <div
+        ref="menuElement"
+        class="w-full h-full fixed bg-white overflow-y-auto"
+        :class="{ 'top-52 border-radius': !scrolled }"
+      >
+        <MenuHeader :compacted="scrolled" />
+        <div class="mt-32 mb-20 opacity-0 animate-fadeIn">
+          <MenuCategory
+            v-for="(category, index) in menu.categories"
+            :key="index"
+            :category="category"
+            @update:setCategoryRef="setCategoryRef"
+          />
+        </div>
+        <MenuFooter @update:selectedCategory="handleCategoryChange" />
       </div>
-      <MenuFooter @update:selectedCategory="handleCategoryChange" />
     </div>
   </NuxtLayout>
 </template>
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
+import { UAParser } from 'ua-parser-js';
 import type { Menu, Category } from '@/types/menu';
+
+const { device } = UAParser();
+const isMobile = device.type === 'mobile' || device.type === 'tablet';
 
 const menu: Menu = {
   categories: [
