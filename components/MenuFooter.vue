@@ -24,25 +24,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { type PropType, ref } from 'vue';
 import type { Category } from '@/types/menu';
 
-const categories: Category[] = [
-  {
-    name: 'Novedades',
+const props = defineProps({
+  categories: {
+    type: Array as PropType<Category[]>,
+    required: true,
   },
-  {
-    name: 'Favoritos',
-  },
-  {
-    name: 'Brunch',
-  },
-  {
-    name: 'Cafés',
-  },
-];
+});
 
-const selectedCategory = ref<Category | null>(categories[0]);
+const selectedCategory = ref<Category | null>(props.categories[0]);
 
 const emit = defineEmits<{
   (event: 'update:selectedCategory', category: Category): void;

@@ -64,7 +64,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, type PropType, ref } from 'vue';
+import { type PropType, ref } from 'vue';
 import type { BackgroundType } from '@/types/menu';
 import LanguageModal from '~/components/LanguageModal.vue';
 import InfoModal from '~/components/InfoModal.vue';

@@ -15,6 +15,11 @@ export interface Menu {
   categories: Category[];
 }
 
+export interface Restaurant {
+  name: string;
+  menu: Menu;
+}
+
 export enum BackgroundType {
   White = 'white',
   Transparent = 'transparent',
