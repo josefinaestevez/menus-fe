@@ -20,7 +20,7 @@
           class="w-full h-full fixed bg-white overflow-y-auto"
           :class="{ 'top-52 border-radius': !scrolled }"
         >
-          <MenuHeader :compacted="scrolled" />
+          <MenuHeader :compacted="scrolled" :restaurant="restaurant" />
           <div class="mt-32 mb-20 opacity-0 animate-fadeIn">
             <MenuCategory
               v-for="(category, index) in restaurant.menu.categories"

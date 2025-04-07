@@ -4,11 +4,13 @@ export interface Dish {
   price: number;
   currency: string;
   image?: string;
+  slug: string;
 }
 
 export interface Category {
   name: string;
   dishes?: Dish[];
+  slug: string;
 }
 
 export interface Menu {
@@ -23,6 +25,7 @@ export interface Restaurant {
   name: string;
   menu: Menu;
   info: RestaurantInfo;
+  slug: string;
 }
 
 export enum BackgroundType {

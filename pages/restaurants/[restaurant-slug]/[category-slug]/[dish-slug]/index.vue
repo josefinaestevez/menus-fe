@@ -15,20 +15,19 @@
       <p class="text-sm text-gray-400">Gluten, lácteos.</p>
     </div>
   </div>
-  <router-link
+  <a
     class="fixed bottom-0 left-0 w-full h-24 flex justify-center"
-    to="/"
+    @click="goBack"
   >
     <img :src="icons.xCircle" alt="X Circle Icon" class="h-10 w-10" />
-  </router-link>
+  </a>
 </template>
 <script setup lang="ts">
 import { BackgroundType } from '@/types/menu';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 const route = useRoute();
 
-// Suponiendo que los parámetros de la ruta sean slug de restaurante, categoría y plato:
 const restaurantSlug = route.params['restaurant-slug'] as string;
 const categorySlug = route.params['category-slug'] as string;
 const dishSlug = route.params['dish-slug'] as string;
@@ -36,6 +35,16 @@ const dishSlug = route.params['dish-slug'] as string;
 const background = BackgroundType.Transparent;
 const icons = {
   xCircle: '/icons/x-circle.svg',
+};
+
+const router = useRouter();
+
+const goBack = () => {
+  if (window.history.length > 1) {
+    router.back();
+  } else {
+    router.push('/'); // fallback si no hay historial
+  }
 };
 </script>
 <style scoped>

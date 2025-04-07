@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/menu-dish" class="flex mt-4">
+  <router-link :to="dishRoute" class="flex mt-4">
     <img
       :src="dish.image ? '/images/desayuno.jpeg' : '/images/grey.jpg'"
       alt="Dish 1"
@@ -17,7 +17,8 @@
 <script setup lang="ts">
 import type { PropType } from 'vue';
 import { computed } from 'vue';
-import type { Dish } from '@/types/menu';
+import type { Dish, Category } from '@/types/menu';
+import { useRoute } from 'vue-router';
 
 const props = defineProps({
   dish: {
@@ -25,6 +26,10 @@ const props = defineProps({
     default() {
       return {};
     },
+  },
+  category: {
+    type: Object as PropType<Category>,
+    required: true,
   },
   currency: {
     type: String,
@@ -36,5 +41,12 @@ const formattedPrice = computed(() => {
     style: 'currency',
     currency: props.currency,
   }).format(props.dish.price);
+});
+
+const route = useRoute();
+const restaurantSlug = route.params.restaurantslug;
+
+const dishRoute = computed(() => {
+  return `/restaurants/${restaurantSlug}/${props.category.slug}/${props.dish.slug}`;
 });
 </script>

@@ -5,6 +5,7 @@
       <MenuCategoryDish
         v-for="(dish, index) in category.dishes"
         :key="index"
+        :category="category"
         :dish="dish"
         :currency="currency"
       />
