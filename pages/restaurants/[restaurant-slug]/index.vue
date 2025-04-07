@@ -26,6 +26,7 @@
               v-for="(category, index) in restaurant.menu.categories"
               :key="index"
               :category="category"
+              :currency="restaurant.info.currency"
               @update:setCategoryRef="setCategoryRef"
             />
           </div>

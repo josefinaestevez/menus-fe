@@ -15,9 +15,14 @@ export interface Menu {
   categories: Category[];
 }
 
+export interface RestaurantInfo {
+  currency: string;
+}
+
 export interface Restaurant {
   name: string;
   menu: Menu;
+  info: RestaurantInfo;
 }
 
 export enum BackgroundType {

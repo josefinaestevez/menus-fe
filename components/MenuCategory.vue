@@ -6,6 +6,7 @@
         v-for="(dish, index) in category.dishes"
         :key="index"
         :dish="dish"
+        :currency="currency"
       />
     </div>
     <hr class="mt-4 w-full" />
@@ -29,6 +30,9 @@ const props = defineProps({
   category: {
     type: Object as PropType<Category>,
     required: true,
+  },
+  currency: {
+    type: String,
   },
 });
 </script>

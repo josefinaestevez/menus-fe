@@ -26,9 +26,15 @@ const props = defineProps({
       return {};
     },
   },
+  currency: {
+    type: String,
+  },
 });
+
 const formattedPrice = computed(() => {
-  // TODO: calculate properly
-  return `${props.dish.currency} ${props.dish.price}`;
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: props.currency,
+  }).format(props.dish.price);
 });
 </script>
