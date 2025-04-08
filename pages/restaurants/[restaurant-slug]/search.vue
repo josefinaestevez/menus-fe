@@ -76,8 +76,6 @@ const filteredCategories = computed(() => {
     .filter((category) => category.dishes && category.dishes.length > 0);
 });
 
-console.log('filteredCategories', filteredCategories);
-
 function goBack() {
   router.back();
 }
