@@ -55,6 +55,7 @@ const icons = {
 
 const searchText = ref('');
 
+// TODO. Think if maybe in the future is better to have another endpoint to fetch only dish info
 const { data: restaurant } = useFetch<Restaurant>(
   `/api/restaurants/${slug}?lang=${locale.value}`
 );
