@@ -23,8 +23,8 @@
           <MenuHeader :compacted="scrolled" :restaurant="restaurant" />
           <div class="mt-32 mb-20 opacity-0 animate-fadeIn">
             <MenuCategory
-              v-for="(category, index) in restaurant.menu.categories"
-              :key="index"
+              v-for="category in restaurant.menu.categories"
+              :key="category.slug"
               :category="category"
               :currency="restaurant.info.currency"
               @update:setCategoryRef="setCategoryRef"
@@ -40,7 +40,7 @@
   </NuxtLayout>
 </template>
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, watch } from 'vue';
 import { useIsMobileDevice } from '~/composables/uaParser';
 import { useRoute, useFetch, useI18n } from '#imports';
 import type { Category, Restaurant } from '@/types/menu';
@@ -71,7 +71,6 @@ function handleCategoryChange(category: Category): void {
     // Container that has the scroll
     const scrollContainer = menuElement.value;
     if (!scrollContainer) {
-      console.error('Scroll container not found');
       return;
     }
 
@@ -98,17 +97,19 @@ function setCategoryRef(el: HTMLElement, categoryName: string): void {
   categoryRefs.value[categoryName] = el;
 }
 
-onMounted(() => {
-  if (menuElement.value) {
-    menuElement.value.addEventListener('scroll', handleScroll);
-  }
-});
+watch(
+  () => menuElement.value,
+  (el, _, onCleanup) => {
+    if (!el) return;
 
-onUnmounted(() => {
-  if (menuElement.value) {
-    menuElement.value.removeEventListener('scroll', handleScroll);
-  }
-});
+    el.addEventListener('scroll', handleScroll);
+
+    onCleanup(() => {
+      el.removeEventListener('scroll', handleScroll);
+    });
+  },
+  { immediate: true }
+);
 </script>
 <style scoped>
 .border-radius {
