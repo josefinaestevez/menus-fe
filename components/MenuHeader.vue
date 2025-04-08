@@ -59,7 +59,7 @@
     </div>
 
     <LanguageModal ref="languageModalRef" />
-    <InfoModal ref="infoModalRef" />
+    <InfoModal ref="infoModalRef" :restaurant="restaurant" />
   </header>
 </template>
 

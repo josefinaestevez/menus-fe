@@ -18,7 +18,19 @@ export interface Menu {
 }
 
 export interface RestaurantInfo {
+  address: string;
   currency: string;
+  email: string;
+  // TODO: to camelcase
+  opening_hours: string;
+  phone_number: string;
+}
+
+export interface SocialMedia {
+  // TODO: to camelcase
+  platform_name: string;
+  username: string;
+  url: string;
 }
 
 export interface Restaurant {
@@ -26,6 +38,7 @@ export interface Restaurant {
   menu: Menu;
   info: RestaurantInfo;
   slug: string;
+  social_media: SocialMedia[];
 }
 
 export enum BackgroundType {

@@ -33,7 +33,7 @@
               >
                 {{ $t('information') }}
               </DialogTitle>
-              <div class="mt-10">
+              <div class="mt-10" v-if="restaurant">
                 <div>
                   <p class="flex">
                     <img
@@ -46,7 +46,7 @@
                     </span>
                   </p>
                   <p class="mt-2 text-slate-500 text-sm">
-                    Calle de la Aurora, 25, 28010 Madrid, España.
+                    {{ restaurant.info.address }}
                   </p>
                   <hr class="mt-8 mx-auto" />
                 </div>
@@ -58,10 +58,7 @@
                     </span>
                   </p>
                   <p class="mt-2 text-slate-500 text-sm">
-                    Lunes a viernes: 8:30 AM - 4:00 PM
-                  </p>
-                  <p class="mt-2 text-slate-500 text-sm">
-                    Sábado y domingo: 9:00 AM - 5:00 PM
+                    {{ restaurant.info.opening_hours }}
                   </p>
                   <hr class="mt-8 mx-auto" />
                 </div>
@@ -74,11 +71,11 @@
                   </p>
                   <p class="mt-2 text-slate-500 text-sm">
                     <span class="font-bold">{{ $t('phone') }}</span>
-                    +34912345678
+                    {{ restaurant.info.phone_number }}
                   </p>
                   <p class="mt-2 text-slate-500 text-sm">
                     <span class="font-bold">{{ $t('email') }}</span>
-                    contacto@brunchdelicias.com
+                    {{ restaurant.info.email }}
                   </p>
                   <hr class="mt-8 mx-auto" />
                 </div>
@@ -89,23 +86,17 @@
                       {{ $t('socialMedia') }}
                     </span>
                   </p>
-                  <p class="mt-2 text-slate-500 text-sm">
-                    <span class="font-bold">Instagram</span>
-                    <span class="underline underline-offset-4">
-                      @brunchdelicias
-                    </span>
-                  </p>
-                  <p class="mt-2 text-slate-500 text-sm">
-                    <span class="font-bold">Facebook</span>
-                    <span class="underline underline-offset-4">
-                      Brunch Delicias
-                    </span>
-                  </p>
-                  <p class="mt-2 text-slate-500 text-sm">
-                    <span class="font-bold">TikTok</span>
-                    <span class="underline underline-offset-4">
-                      @brunchdelicias
-                    </span>
+                  <p
+                    class="mt-2 text-slate-500 text-sm"
+                    v-for="(social, index) in restaurant.social_media"
+                    :key="index"
+                  >
+                    <span class="font-bold">{{ social.platform_name }}: </span>
+                    <a :href="social.url" target="_blank">
+                      <span class="underline underline-offset-4">
+                        {{ social.username }}
+                      </span>
+                    </a>
                   </p>
                   <hr class="mt-8 mx-auto" />
                 </div>
@@ -126,8 +117,8 @@
   </TransitionRoot>
 </template>
 
-<script setup>
-import { ref, defineExpose } from 'vue';
+<script setup lang="ts">
+import { type PropType, ref, defineExpose } from 'vue';
 import {
   TransitionRoot,
   TransitionChild,
@@ -135,6 +126,14 @@ import {
   DialogPanel,
   DialogTitle,
 } from '@headlessui/vue';
+import type { Restaurant } from '@/types/menu';
+
+const props = defineProps({
+  restaurant: {
+    type: Object as PropType<Restaurant>,
+    required: false,
+  },
+});
 
 const isOpen = ref(false);
 
