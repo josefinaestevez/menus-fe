@@ -8,7 +8,7 @@
       </p>
     </div>
     <div v-else>
-      <div v-if="status === 'pending'">Loading...</div>
+      <div v-if="!restaurant && !error">Loading...</div>
       <div v-else-if="error">Error loading restaurant</div>
       <div v-else-if="restaurant">
         <div
@@ -40,20 +40,20 @@
   </NuxtLayout>
 </template>
 <script setup lang="ts">
+import { useFetch } from '#app';
+import { useI18n } from 'vue-i18n';
 import { ref, watch } from 'vue';
-import { useIsMobileDevice } from '~/composables/uaParser';
-import { useRoute, useFetch, useI18n } from '#imports';
-import type { Category, Restaurant } from '@/types/menu';
+import { useIsMobileDevice } from '../../../composables/uaParser';
+import type { Category, Restaurant } from '../../../types/menu';
+import { useRoute } from 'vue-router';
 
 const route = useRoute();
-const slug = route.params.restaurantslug;
+const slug = route.params.restaurantSlug;
 const { locale } = useI18n();
 
-const {
-  data: restaurant,
-  error,
-  status,
-} = useFetch<Restaurant>(`/api/restaurants/${slug}?lang=${locale.value}`);
+const { data: restaurant, error } = useFetch<Restaurant>(
+  `/api/restaurants/${slug}?lang=${locale.value}`
+);
 
 const { data: isMobile } = useIsMobileDevice();
 

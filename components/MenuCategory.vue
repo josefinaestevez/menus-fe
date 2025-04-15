@@ -15,7 +15,7 @@
 </template>
 <script setup lang="ts">
 import type { PropType, ComponentPublicInstance } from 'vue';
-import type { Category } from '@/types/menu';
+import type { Category } from '../types/menu';
 
 const emit = defineEmits<{
   (event: 'update:setCategoryRef', el: HTMLElement, categoryName: string): void;

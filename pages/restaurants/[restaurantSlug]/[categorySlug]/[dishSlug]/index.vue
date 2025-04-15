@@ -5,7 +5,11 @@
     <div
       class="bg-fixed bg-contain h-[24rem] w-full bg-[url('/images/desayuno.jpeg')]"
     >
-      <MenuHeader :background="background" hide-title />
+      <MenuHeader
+        :background="background"
+        hide-title
+        :restaurant="restaurant"
+      />
     </div>
     <div
       class="bg-white h-full w-full fixed top-[22rem] border-radius"
@@ -33,16 +37,16 @@
 </template>
 <script setup lang="ts">
 import { computed } from 'vue';
-import { BackgroundType } from '@/types/menu';
+import { BackgroundType, type Restaurant } from '../../../../../types/menu';
 import { useRoute, useRouter } from 'vue-router';
-import { useFetch, useI18n } from '#imports';
-import type { Restaurant } from '@/types/menu';
+import { useFetch } from '#app';
+import { useI18n } from 'vue-i18n';
 
 const route = useRoute();
 
-const restaurantSlug = route.params.restaurantslug;
-const categorySlug = route.params.categoryslug;
-const dishSlug = route.params.dishslug;
+const restaurantSlug = route.params.restaurantSlug;
+const categorySlug = route.params.categorySlug;
+const dishSlug = route.params.dishSlug;
 
 const { locale } = useI18n();
 

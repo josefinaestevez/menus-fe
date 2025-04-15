@@ -65,10 +65,10 @@
 
 <script setup lang="ts">
 import { type PropType, ref, computed } from 'vue';
-import type { BackgroundType } from '@/types/menu';
+import type { BackgroundType } from '../types/menu';
 import LanguageModal from '~/components/LanguageModal.vue';
 import InfoModal from '~/components/InfoModal.vue';
-import type { Restaurant } from '@/types/menu';
+import type { Restaurant } from '../types/menu';
 
 const props = defineProps({
   compacted: {

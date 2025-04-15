@@ -118,7 +118,7 @@
 </template>
 
 <script setup lang="ts">
-import { type PropType, ref, defineExpose } from 'vue';
+import { type PropType, ref } from 'vue';
 import {
   TransitionRoot,
   TransitionChild,
@@ -126,7 +126,7 @@ import {
   DialogPanel,
   DialogTitle,
 } from '@headlessui/vue';
-import type { Restaurant } from '@/types/menu';
+import type { Restaurant } from '../types/menu';
 
 const props = defineProps({
   restaurant: {

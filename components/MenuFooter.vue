@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 import { type PropType, ref } from 'vue';
-import type { Category } from '@/types/menu';
+import type { Category } from '../types/menu';
 
 const props = defineProps({
   categories: {

@@ -8,8 +8,12 @@ export default defineEventHandler(async (event) => {
     return { message: 'Restaurant not found' };
   }
 
+  const config = useRuntimeConfig();
+  const apiBaseUrl = config.public.apiBaseUrl;
+
   const response = await $fetch(
-    `http://localhost:8000/api/restaurants/${params.slug}?lang=${query.lang}`
+    `${apiBaseUrl}/restaurants/${params.slug}?lang=${query.lang}`
   );
+
   return response;
 });

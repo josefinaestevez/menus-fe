@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import type { PropType } from 'vue';
 import { computed } from 'vue';
-import type { Dish, Category } from '@/types/menu';
+import type { Dish, Category } from '../types/menu';
 import { useRoute } from 'vue-router';
 
 const props = defineProps({
@@ -44,7 +44,7 @@ const formattedPrice = computed(() => {
 });
 
 const route = useRoute();
-const restaurantSlug = route.params.restaurantslug;
+const restaurantSlug = route.params.restaurantSlug;
 
 const dishRoute = computed(() => {
   return `/restaurants/${restaurantSlug}/${props.category.slug}/${props.dish.slug}`;

@@ -41,12 +41,13 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { useI18n, useFetch } from '#imports';
-import type { Restaurant } from '@/types/menu';
+import { useFetch } from '#app';
+import { useI18n } from 'vue-i18n';
+import type { Restaurant } from '../../../types/menu';
 
 const route = useRoute();
 const router = useRouter();
-const slug = route.params.restaurantslug;
+const slug = route.params.restaurantSlug;
 const { locale } = useI18n();
 
 const icons = {

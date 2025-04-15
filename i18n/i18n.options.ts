@@ -13,6 +13,9 @@ const i18nOptions: NuxtI18nOptions = {
   ],
   defaultLocale: 'es',
   vueI18n: './i18n.config.ts', // Path to Vue I18n configuration
+  bundle: {
+    optimizeTranslationDirective: false,
+  },
 };
 
 export default i18nOptions;
