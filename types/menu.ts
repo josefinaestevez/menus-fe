@@ -3,7 +3,13 @@ export interface Dish {
   description: string;
   price: number;
   currency: string;
-  image?: string;
+  photo?: string;
+  slug: string;
+}
+
+export interface Subcategory {
+  name: string;
+  dishes?: Dish[];
   slug: string;
 }
 
@@ -11,6 +17,7 @@ export interface Category {
   name: string;
   dishes?: Dish[];
   slug: string;
+  subcategories?: Subcategory[];
 }
 
 export interface Menu {

@@ -1,8 +1,8 @@
 <template>
   <router-link :to="dishRoute" class="flex mt-4">
     <img
-      :src="dish.image ? '/images/desayuno.jpeg' : '/images/grey.jpg'"
-      alt="Dish 1"
+      :src="dish.photo || '/images/grey.jpg'"
+      :alt="`Dish ${dish.name} photo`"
       class="w-24 h-24 aspect-square rounded-md"
     />
     <div class="pl-2 pr-2 w-full">

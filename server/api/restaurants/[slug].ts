@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
   const apiBaseUrl = config.public.apiBaseUrl;
 
   const response = await $fetch(
-    `${apiBaseUrl}/restaurants/${params.slug}?lang=${query.lang}`
+    `${apiBaseUrl}/restaurants/${params.slug}/?lang=${query.lang}`
   );
 
   return response;

@@ -1,7 +1,10 @@
 <template>
   <div :ref="(el) => setCategoryRef(el)">
     <div class="pl-3 pr-3">
-      <h2 class="mt-3 font-semibold">{{ category.name }}</h2>
+      <h2 class="mt-3 font-semibold">
+        {{ category.name }}
+      </h2>
+
       <MenuCategoryDish
         v-for="(dish, index) in category.dishes"
         :key="index"
@@ -9,7 +12,19 @@
         :dish="dish"
         :currency="currency"
       />
+
+      <div v-for="(subcategory, index) in category.subcategories" :key="index">
+        <h2 class="mt-3 font-semibold">{{ subcategory.name }}</h2>
+        <MenuCategoryDish
+          v-for="(dish, index) in subcategory.dishes"
+          :key="index"
+          :category="subcategory"
+          :dish="dish"
+          :currency="currency"
+        />
+      </div>
     </div>
+
     <hr class="mt-4 w-full" />
   </div>
 </template>
