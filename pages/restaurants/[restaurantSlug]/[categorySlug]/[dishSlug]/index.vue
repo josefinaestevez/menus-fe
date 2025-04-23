@@ -3,7 +3,10 @@
   <div v-else-if="error">Error loading restaurant</div>
   <div v-else-if="restaurant">
     <div
-      class="bg-fixed bg-contain h-[24rem] w-full bg-[url('/images/desayuno.jpeg')]"
+      class="bg-fixed bg-contain h-[24rem] w-full"
+      :style="{
+        backgroundImage: `url(${dish?.photo || `/images/grey.jpg`})`,
+      }"
     >
       <MenuHeader
         :background="background"
