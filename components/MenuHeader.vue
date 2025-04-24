@@ -22,6 +22,7 @@
           @click="openInfoModal"
         />
         <img
+          v-if="!hideGlobe"
           :src="icons.globe"
           alt="Globe Icon"
           class="h-6 w-6"
@@ -41,6 +42,7 @@
           <img :src="icons.search" alt="Search Icon" class="h-6 w-6" />
         </router-link>
         <img
+          v-if="!hideGlobe"
           :src="icons.globe"
           alt="Globe Icon"
           class="h-6 w-6"
@@ -86,6 +88,10 @@ const props = defineProps({
   restaurant: {
     type: Object as PropType<Restaurant>,
     required: false,
+  },
+  hideGlobe: {
+    type: Boolean,
+    default: false,
   },
 });
 

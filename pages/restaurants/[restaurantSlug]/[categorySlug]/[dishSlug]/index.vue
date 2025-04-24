@@ -10,8 +10,9 @@
     >
       <MenuHeader
         :background="background"
-        hide-title
         :restaurant="restaurant"
+        hide-globe
+        hide-title
       />
     </div>
     <div
