@@ -46,6 +46,7 @@ export interface Restaurant {
   info: RestaurantInfo;
   slug: string;
   social_media: SocialMedia[];
+  photo?: string;
 }
 
 export enum BackgroundType {

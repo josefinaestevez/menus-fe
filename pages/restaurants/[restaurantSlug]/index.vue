@@ -13,7 +13,10 @@
       <div v-else-if="restaurant">
         <div
           v-if="!scrolled"
-          class="bg-fixed bg-contain h-64 w-full bg-[url('/images/restaurant-header.jpeg')]"
+          class="bg-fixed bg-contain h-64 w-full"
+          :style="{
+            backgroundImage: `url(${restaurant?.photo || `/images/grey.jpg`})`,
+          }"
         ></div>
         <div
           ref="menuElement"
