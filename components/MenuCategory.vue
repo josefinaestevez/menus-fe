@@ -1,32 +1,37 @@
 <template>
   <div :ref="(el) => setCategoryRef(el)">
-    <div class="pl-3 pr-3">
-      <h2 class="mt-3 font-semibold">
+    <div>
+      <h2 class="font-semibold w-full ml-3 md:ml-10">
         {{ category.name }}
       </h2>
 
-      <MenuCategoryDish
-        v-for="(dish, index) in category.dishes"
-        :key="index"
-        :category="category"
-        :dish="dish"
-        :currency="currency"
-      />
-
-      <div v-for="(subcategory, index) in category.subcategories" :key="index">
-        <h2 class="mt-3 font-semibold">{{ subcategory.name }}</h2>
+      <div class="mx-3 md:mx-10 sm:columns-1 lg:columns-3 md:columns-2">
         <MenuCategoryDish
-          v-for="(dish, index) in subcategory.dishes"
+          v-for="(dish, index) in category.dishes"
           :key="index"
-          :category="subcategory"
+          :category="category"
           :dish="dish"
           :currency="currency"
         />
       </div>
-    </div>
 
-    <hr class="mt-4 w-full" />
+      <div v-for="(subcategory, index) in category.subcategories" :key="index">
+        <h2 class="mx-3 md:mx-10 font-semibold w-full mt-3">
+          {{ subcategory.name }}
+        </h2>
+        <div class="mx-3 md:mx-10 sm:columns-1 lg:columns-3 md:columns-2">
+          <MenuCategoryDish
+            v-for="(dish, index) in subcategory.dishes"
+            :key="index"
+            :category="subcategory"
+            :dish="dish"
+            :currency="currency"
+          />
+        </div>
+      </div>
+    </div>
   </div>
+  <hr class="mt-4 mb-4 w-full" />
 </template>
 <script setup lang="ts">
 import type { PropType, ComponentPublicInstance } from 'vue';

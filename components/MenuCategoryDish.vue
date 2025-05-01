@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="dishRoute" class="flex mt-4">
+  <router-link :to="dishRoute" class="flex pt-4 break-inside-avoid">
     <img
       :src="dish.photo || '/images/grey.jpg'"
       :alt="`Dish ${dish.name} photo`"

@@ -7,7 +7,7 @@
   >
     <!-- When the user hasn't scrolled -->
     <div v-if="!compacted" class="w-full">
-      <div class="flex justify-between w-full lg:mt-32 lg:px-10 mt-16 px-3">
+      <div class="flex justify-between w-full mt-32 lg:px-10 px-3">
         <div>
           <h1 class="text-2xl font-bold">{{ restaurant?.name }}</h1>
           <p class="text-sm text-slate-400 mt-1 mb-4">Menú</p>
@@ -88,7 +88,7 @@ import type { BackgroundType } from '../types/menu';
 import LanguageModal from '~/components/LanguageModal.vue';
 import InfoModal from '~/components/InfoModal.vue';
 import type { Restaurant, Category } from '../types/menu';
-import { useIsMobileDevice } from '../composables/uaParser';
+import { useIsMobile } from '../composables/uaParser';
 
 const props = defineProps({
   compacted: {
@@ -141,7 +141,7 @@ const searchRoute = computed(() => {
   return `/restaurants/${props.restaurant?.slug}/search`;
 });
 
-const { data: isMobile } = useIsMobileDevice();
+const { data: isMobile } = useIsMobile();
 
 const emit = defineEmits<{
   (event: 'update:selectedCategory', category: Category): void;

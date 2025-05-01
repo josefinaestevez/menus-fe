@@ -23,7 +23,7 @@
             :categories="restaurant.menu.categories"
             @update:selectedCategory="handleCategoryChange"
           />
-          <div class="lg:mt-44 mt-32 mb-20 opacity-0 animate-fadeIn">
+          <div class="lg:mt-44 mt-44 mb-20 opacity-0 animate-fadeIn">
             <MenuCategory
               v-for="category in restaurant.menu.categories"
               :key="category.slug"
@@ -46,7 +46,7 @@
 import { useFetch } from '#app';
 import { useI18n } from 'vue-i18n';
 import { ref, watch } from 'vue';
-import { useIsMobileDevice } from '../../../composables/uaParser';
+import { useIsMobile } from '../../../composables/uaParser';
 import type { Category, Restaurant } from '../../../types/menu';
 import { useRoute } from 'vue-router';
 
@@ -58,7 +58,7 @@ const { data: restaurant, error } = useFetch<Restaurant>(
   `/api/restaurants/${slug}?lang=${locale.value}`
 );
 
-const { data: isMobile } = useIsMobileDevice();
+const { data: isMobile } = useIsMobile();
 
 const scrolled = ref(false);
 const menuElement = ref<HTMLElement | null>(null);
