@@ -13,6 +13,7 @@
         :restaurant="restaurant"
         hide-globe
         hide-title
+        :categories="restaurant.menu.categories"
       />
     </div>
     <div

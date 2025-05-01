@@ -1,5 +1,11 @@
 <template>
-  <footer class="fixed bottom-0 left-0 w-full bg-white">
+  <footer
+    class="left-0 w-full bg-white"
+    :class="{
+      'bottom-0 fixed': position === 'bottom',
+      'top-0 sticky': position === 'top',
+    }"
+  >
     <div
       class="flex overflow-x-auto items-center h-16 border-b-2 border-solid border-stone-200 scrollbar-hide"
     >
@@ -31,6 +37,10 @@ const props = defineProps({
   categories: {
     type: Array as PropType<Category[]>,
     required: true,
+  },
+  position: {
+    type: String,
+    default: 'bottom',
   },
 });
 

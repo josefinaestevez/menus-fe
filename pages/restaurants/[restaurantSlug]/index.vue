@@ -1,13 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <NuxtLayout name="default">
-    <div v-if="!isMobile">
-      <p class="mt-10 text-center">
-        This content is designed for mobile devices. Please try accessing it
-        from your phone or tablet.
-      </p>
-    </div>
-    <div v-else>
+    <div>
       <div v-if="!restaurant && !error">Loading...</div>
       <div v-else-if="error">Error loading restaurant</div>
       <div v-else-if="restaurant">
@@ -23,8 +17,13 @@
           class="w-full h-full fixed bg-white overflow-y-auto"
           :class="{ 'top-52 border-radius': !scrolled }"
         >
-          <MenuHeader :compacted="scrolled" :restaurant="restaurant" />
-          <div class="mt-32 mb-20 opacity-0 animate-fadeIn">
+          <MenuHeader
+            :compacted="scrolled"
+            :restaurant="restaurant"
+            :categories="restaurant.menu.categories"
+            @update:selectedCategory="handleCategoryChange"
+          />
+          <div class="lg:mt-44 mt-32 mb-20 opacity-0 animate-fadeIn">
             <MenuCategory
               v-for="category in restaurant.menu.categories"
               :key="category.slug"
@@ -34,6 +33,7 @@
             />
           </div>
           <MenuFooter
+            v-if="isMobile"
             @update:selectedCategory="handleCategoryChange"
             :categories="restaurant.menu.categories"
           />
