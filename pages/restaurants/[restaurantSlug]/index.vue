@@ -7,15 +7,22 @@
       <div v-else-if="restaurant">
         <div
           v-if="!scrolled"
-          class="bg-fixed bg-contain h-64 w-full"
+          class="w-full bg-cover bg-center"
           :style="{
-            backgroundImage: `url(${restaurant?.photo || `/images/grey.jpg`})`,
+            backgroundImage: `url(${restaurant?.photo || '/images/grey.jpg'})`,
+            aspectRatio: '16 / 9',
+            maxHeight: '600px',
+            minHeight: '300px',
           }"
         ></div>
+
         <div
           ref="menuElement"
           class="w-full h-full fixed bg-white overflow-y-auto"
-          :class="{ 'top-52 border-radius': !scrolled }"
+          :class="{
+            'top-52 border-radius': !scrolled && isMobile,
+            'top-80 border-radius': !scrolled && !isMobile,
+          }"
         >
           <MenuHeader
             :compacted="scrolled"
