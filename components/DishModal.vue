@@ -25,29 +25,28 @@
             leave-to="opacity-0 scale-95"
           >
             <DialogPanel
-              class="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-center shadow-xl transition-all"
-            >
+              class="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white shadow-xl transition-all"
+              ><div
+                class="bg-center h-[24rem] w-full"
+                :style="{
+                  backgroundImage: `url(${dish?.photo || `/images/grey.jpg`})`,
+                }"
+              ></div>
               <DialogTitle
                 as="h3"
-                class="text-xl font-bold leading-6 text-gray-900 align-top"
+                class="px-6 pt-6 text-xl font-bold leading-6 text-gray-900 align-top text-left"
               >
-                {{ $t('language') }}
+                <p>{{ dish.name }}</p>
               </DialogTitle>
-              <div class="mt-10">
-                <ul>
-                  <template v-for="(locale, index) in locales" :key="index">
-                    <li
-                      class="mt-2 text-lg"
-                      :class="{ 'font-bold': locale.code === currentLocale }"
-                      @click="setLocale(locale.code)"
-                    >
-                      {{ locale.name }}
-                    </li>
-                    <hr class="mt-4 w-3/4 mx-auto" />
-                  </template>
-                </ul>
+              <div class="px-6">
+                <div class="w-full">
+                  <p class="text-md text-black">{{ formattedPrice }}</p>
+                  <p class="text-sm text-gray-600 mt-3">
+                    {{ dish.description }}
+                  </p>
+                </div>
               </div>
-              <div class="mt-10 flex justify-center">
+              <div class="mt-10 p-6 flex justify-center">
                 <img
                   :src="icons.xCircle"
                   alt="X Circle Icon"
@@ -63,8 +62,8 @@
   </TransitionRoot>
 </template>
 
-<script setup>
-import { ref } from 'vue';
+<script setup lang="ts">
+import { type PropType, ref, computed } from 'vue';
 import {
   TransitionRoot,
   TransitionChild,
@@ -72,11 +71,19 @@ import {
   DialogPanel,
   DialogTitle,
 } from '@headlessui/vue';
-import { useI18n } from 'vue-i18n';
+import type { Dish } from '../types/menu';
+
+const props = defineProps({
+  dish: {
+    type: Object as PropType<Dish>,
+    required: true,
+  },
+  currency: {
+    type: String,
+  },
+});
 
 const isOpen = ref(false);
-
-const { locales, locale: currentLocale, setLocale } = useI18n();
 
 function closeModal() {
   isOpen.value = false;
@@ -87,8 +94,19 @@ function openModal() {
 }
 
 const icons = {
+  atSign: '/icons/at-sign.svg',
+  clock: '/icons/clock.svg',
+  mail: '/icons/mail.svg',
+  mapPin: '/icons/map-pin.svg',
   xCircle: '/icons/x-circle.svg',
 };
+
+const formattedPrice = computed(() => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: props.currency,
+  }).format(props.dish.price);
+});
 
 defineExpose({
   openModal,
